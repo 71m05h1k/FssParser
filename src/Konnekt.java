@@ -4,9 +4,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * andrew on 9/8/15
- */
 class Konnekt {
     String searchstring;
     HttpURLConnection connection;
@@ -33,7 +30,7 @@ class Konnekt {
         StringBuilder tempstring = new StringBuilder();
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            br = new BufferedReader(new InputStreamReader(connection.getInputStream(),"windows-1251"));
         } catch (IOException e) {
             e.printStackTrace();
         }
