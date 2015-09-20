@@ -6,6 +6,7 @@ import java.net.URL;
 
 class Konnekt {
     String searchstring;
+    String pechenyushka;
     HttpURLConnection connection;
     Konnekt(String searchstr) {
         this.searchstring = searchstr;
@@ -35,9 +36,11 @@ class Konnekt {
             e.printStackTrace();
         }
 
-        System.out.print("c00kies=");
-        System.out.println(connection.getHeaderField("Set-Cookie"));
-        System.out.println("Stranica=");
+        if (pechenyushka == null) {
+            pechenyushka = connection.getHeaderField("Set-Cookie");
+        }
+        connection.setRequestProperty("Set-Cookie", pechenyushka);
+
 
         String line;
         try {
