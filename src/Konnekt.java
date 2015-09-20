@@ -19,7 +19,7 @@ class Konnekt {
         connection.setRequestProperty("User-Agent" , "Mozilla/5.0 (X11; Linux i686; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.2.0");
         connection.setRequestProperty("Accept" , "*/*");
         connection.setRequestProperty("Accept-Language" , "ru,en-US;q=0.7,en;q=0.3");
-        connection.setRequestProperty("Accept-Encoding" , "gzip, deflate");
+        connection.setRequestProperty("Accept-Encoding" , "deflate");
         connection.setRequestProperty("DNT" , "1");
         connection.setRequestProperty("X-Requested-With" , "XMLHttpRequest");
         connection.setRequestProperty("Referer" , "http://fssprus.ru/iss/ip/");
@@ -34,6 +34,11 @@ class Konnekt {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.print("c00kies=");
+        System.out.println(connection.getHeaderField("Set-Cookie"));
+        System.out.println("Stranica=");
+
         String line;
         try {
             if (br != null) {
