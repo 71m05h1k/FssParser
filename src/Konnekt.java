@@ -8,9 +8,10 @@ class Konnekt {
     String searchstring;
     String pechenyushka;
     HttpURLConnection connection;
-    Konnekt(String searchstr) {
-        this.searchstring = searchstr;
 
+    public String openpage (String searchstr) {
+
+        this.searchstring = searchstr;
         try {
             connection = (HttpURLConnection) new URL(searchstring).openConnection();
         } catch (IOException e) {
@@ -25,9 +26,8 @@ class Konnekt {
         connection.setRequestProperty("X-Requested-With" , "XMLHttpRequest");
         connection.setRequestProperty("Referer" , "http://fssprus.ru/iss/ip/");
         connection.setRequestProperty("Connection" , "keep-alive");
-    }
 
-    public String openpage () {
+
         StringBuilder tempstring = new StringBuilder();
         BufferedReader br = null;
         try {
@@ -36,10 +36,11 @@ class Konnekt {
             e.printStackTrace();
         }
 
-        if (pechenyushka == null) {
-            pechenyushka = connection.getHeaderField("Set-Cookie");
+        if (pechenyushka != null) {
+//            pechenyushka = connection.getHeaderField("Set-Cookie");
+            connection.setRequestProperty("Set-Cookie", pechenyushka);
         }
-        connection.setRequestProperty("Set-Cookie", pechenyushka);
+
 
 
         String line;
