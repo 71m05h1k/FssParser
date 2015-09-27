@@ -17,6 +17,11 @@ class Konnekt {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (pechenyushka != null) {
+            connection.setRequestProperty("Set-Cookie", pechenyushka);
+        }
+
         connection.setRequestProperty("Host" , "fssprus.ru");
         connection.setRequestProperty("User-Agent" , "Mozilla/5.0 (X11; Linux i686; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.2.0");
         connection.setRequestProperty("Accept" , "*/*");
@@ -36,13 +41,6 @@ class Konnekt {
             e.printStackTrace();
         }
 
-        if (pechenyushka != null) {
-//            pechenyushka = connection.getHeaderField("Set-Cookie");
-            connection.setRequestProperty("Set-Cookie", pechenyushka);
-        }
-
-
-
         String line;
         try {
             if (br != null) {
@@ -60,6 +58,8 @@ class Konnekt {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        pechenyushka = connection.getHeaderField("Set-Cookie");
         return tempstring.toString();
     }
 }
