@@ -18,10 +18,6 @@ class Konnekt {
             e.printStackTrace();
         }
 
-        if (pechenyushka != null) {
-            connection.setRequestProperty("Set-Cookie", pechenyushka);
-        }
-
         connection.setRequestProperty("Host" , "fssprus.ru");
         connection.setRequestProperty("User-Agent" , "Mozilla/5.0 (X11; Linux i686; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.2.0");
         connection.setRequestProperty("Accept" , "*/*");
@@ -31,7 +27,9 @@ class Konnekt {
         connection.setRequestProperty("X-Requested-With" , "XMLHttpRequest");
         connection.setRequestProperty("Referer" , "http://fssprus.ru/iss/ip/");
         connection.setRequestProperty("Connection" , "keep-alive");
-
+        if (pechenyushka != null) {
+            connection.setRequestProperty("Set-Cookie", pechenyushka);
+        }
 
         StringBuilder tempstring = new StringBuilder();
         BufferedReader br = null;
